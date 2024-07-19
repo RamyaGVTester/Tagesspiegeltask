@@ -1,0 +1,11 @@
+# Locators for Registration Page
+EMAIL_INPUT = "id=forms/formRegistration_email"
+FIRST_NAME_INPUT = "id=forms/formRegistration_forename"
+LAST_NAME_INPUT = "id=forms/formRegistration_surname"
+REGISTER_BUTTON = "text=Jetzt registrieren"
+HEADING_TITLE = "css=h1.heading-title"
+EMAIL_CONFIRMATION_TEXT = "xpath=//*[contains(text(), 'gmail.com')]"
+REGISTRATION_IFRAME = "iframe#modal-iframe"
+REGISTRATION_IFRAME1 = "id=modal-iframe"
+CLOSE_REGISTRATION = "id=sso-flash-close"
+REGISTRATION_TAB_BUTTON = "css=button[data-nav-item='register']"

@@ -1,0 +1,2099 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.11.9 on win32)" generated="2024-07-19T12:28:16.353514" rpa="false" schemaversion="5">
+<suite id="s1" name="registrationTest" source="F:\tagesspiegel_registrieren\tests\registrationTest.robot">
+<test id="s1-t1" name="Verify Registration Process" line="13">
+<kw name="Set Up Browser" type="SETUP">
+<kw name="Launch Browser" owner="basePage">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="New Browser" owner="Browser">
+<msg time="2024-07-19T12:28:25.857873" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "F:\\tagesspiegel_registrieren\\browser\\traces\\f8874963-6b3e-44f3-8db1-6d67abe8f0a2"}</msg>
+<msg time="2024-07-19T12:28:29.253907" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"F:\\tagesspiegel_registrieren\\browser\\traces\\f8874963-6b3e-44f3-8db1-6d67abe8f0a2"}</msg>
+<arg>${DEFAULT_BROWSER}</arg>
+<arg>headless=No</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2024-07-19T12:28:25.857873" elapsed="3.396034"/>
+</kw>
+<msg time="2024-07-19T12:28:29.253907" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>New Browser</arg>
+<arg>${DEFAULT_BROWSER}</arg>
+<arg>headless=No</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:28:25.857873" elapsed="3.396034"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status} == False</arg>
+<arg>Log</arg>
+<arg>Failed to launch the browser</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:28:29.253907" elapsed="0.000000"/>
+</kw>
+<kw name="New Context" owner="Browser">
+<msg time="2024-07-19T12:28:29.253907" level="INFO">{
+  "acceptDownloads": true,
+  "bypassCSP": false,
+  "forcedColors": "none",
+  "ignoreHTTPSErrors": false,
+  "javaScriptEnabled": true,
+  "offline": false,
+  "reducedMotion": "no-preference",
+  "serviceWorkers": "allow",
+  "viewport": {
+    "height": 729,
+    "width": 1536
+  }
+}</msg>
+<msg time="2024-07-19T12:28:29.426471" level="INFO">Successfully created context. </msg>
+<msg time="2024-07-19T12:28:29.426471" level="INFO">{'acceptDownloads': True, 'bypassCSP': False, 'forcedColors': 'none', 'ignoreHTTPSErrors': False, 'javaScriptEnabled': True, 'offline': False, 'reducedMotion': 'no-preference', 'serviceWorkers': 'allow', 'viewport': {'height': 729, 'width': 1536}}</msg>
+<arg>viewport={'width': 1536, 'height': 729.60}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new BrowserContext with specified options.</doc>
+<status status="PASS" start="2024-07-19T12:28:29.253907" elapsed="0.172564"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:28:29.426471" level="INFO">Browser launched</msg>
+<arg>Browser launched</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:28:29.426471" elapsed="0.019087"/>
+</kw>
+<doc>Launches a new browser instance with the specified configuration.This keyword iterates over a list of browsers defined in the `@{BROWSERS}` variable, and for each browser:
+Opens a new browser instance using the `New Browser` keyword.
+Sets up a new browser context with a specified viewport size.</doc>
+<status status="PASS" start="2024-07-19T12:28:25.857873" elapsed="3.587685"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:28:29.445558" level="INFO">Browser setup complete</msg>
+<arg>Browser setup complete</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:28:29.445558" elapsed="0.020969"/>
+</kw>
+<status status="PASS" start="2024-07-19T12:28:25.857873" elapsed="3.609759"/>
+</kw>
+<kw name="Generate Random Email" owner="basePage">
+<kw name="Generate Random String" owner="String">
+<msg time="2024-07-19T12:28:29.485737" level="INFO">${random_string} = 3aIMYGe7tD</msg>
+<var>${random_string}</var>
+<arg>10</arg>
+<arg>[LETTERS][NUMBERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="PASS" start="2024-07-19T12:28:29.484733" elapsed="0.001004"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-07-19T12:28:29.488273" level="INFO">${email} = ramyatagesspiegel+3aIMYGe7tD@gmail.com</msg>
+<var>${email}</var>
+<arg>${email_prefix}+${random_string}@${email_domain}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-07-19T12:28:29.486733" elapsed="0.001540"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:28:29.490274" level="INFO">Generated Email: ramyatagesspiegel+3aIMYGe7tD@gmail.com</msg>
+<arg>Generated Email: ${email}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:28:29.489276" elapsed="0.014023"/>
+</kw>
+<return>
+<value>${email}</value>
+<status status="PASS" start="2024-07-19T12:28:29.504298" elapsed="0.000000"/>
+</return>
+<msg time="2024-07-19T12:28:29.505295" level="INFO">${random_email} = ramyatagesspiegel+3aIMYGe7tD@gmail.com</msg>
+<var>${random_email}</var>
+<doc>Generates random email id for testing purpose</doc>
+<status status="PASS" start="2024-07-19T12:28:29.481742" elapsed="0.023553"/>
+</kw>
+<kw name="Set Browser Timeout" owner="Browser">
+<msg time="2024-07-19T12:28:29.566165" level="INFO">Set timeout to: 20000</msg>
+<arg>20s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" start="2024-07-19T12:28:29.518815" elapsed="0.047350"/>
+</kw>
+<kw name="Open Home Page" owner="homePage">
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:28:29.566165" level="INFO">Environment: prod</msg>
+<arg>Environment: ${env}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:28:29.566165" elapsed="0.000000"/>
+</kw>
+<kw name="Set Environment URL" owner="basePage">
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Set Variable" owner="BuiltIn">
+<arg>${PRODUCTION_URL}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-07-19T12:28:29.579726" elapsed="0.000000"/>
+</kw>
+<msg time="2024-07-19T12:28:29.579726" level="INFO">${url} = https://www.tagesspiegel.de</msg>
+<var>${url}</var>
+<arg>'${env}' == 'prod'</arg>
+<arg>Set Variable</arg>
+<arg>${PRODUCTION_URL}</arg>
+<arg>ELSE IF</arg>
+<arg>'${env}' == 'staging'</arg>
+<arg>Set Variable</arg>
+<arg>${STAGING_URL}</arg>
+<arg>ELSE IF</arg>
+<arg>'${env}' == 'test1'</arg>
+<arg>Set Variable</arg>
+<arg>${TEST1_URL}</arg>
+<arg>ELSE</arg>
+<arg>Set Variable</arg>
+<arg>https://${env}.tagesspiegel.de</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:28:29.578211" elapsed="0.001515"/>
+</kw>
+<return>
+<value>${url}</value>
+<status status="PASS" start="2024-07-19T12:28:29.579726" elapsed="0.000000"/>
+</return>
+<msg time="2024-07-19T12:28:29.579726" level="INFO">${url} = https://www.tagesspiegel.de</msg>
+<var>${url}</var>
+<arg>${env}</arg>
+<doc>Determines and sets the URL based on the provided environment.
+If the environment is 'prod', it sets the URL to the production URL.
+If the environment is 'staging', it sets the URL to the staging URL.
+If the environment is 'test1', it sets the URL to the test1 URL.
+For any other environment, it constructs a URL based on the provided environment identifier.</doc>
+<status status="PASS" start="2024-07-19T12:28:29.577220" elapsed="0.002506"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:28:29.579726" level="INFO">Trying to open URL: https://www.tagesspiegel.de</msg>
+<arg>Trying to open URL: ${url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:28:29.579726" elapsed="0.000000"/>
+</kw>
+<kw name="Open New Page" owner="basePage">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="New Page" owner="Browser">
+<msg time="2024-07-19T12:28:35.476916" level="INFO">Successfully initialized new page object and opened url: https://www.tagesspiegel.de</msg>
+<arg>${url}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2024-07-19T12:28:29.579726" elapsed="5.898187"/>
+</kw>
+<msg time="2024-07-19T12:28:35.477913" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>New Page</arg>
+<arg>${url}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:28:29.579726" elapsed="5.898187"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status} == False</arg>
+<arg>Log</arg>
+<arg>Failed to open page with URL: ${url}</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:28:35.478911" elapsed="0.000472"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:28:35.480380" level="INFO">New page opened with URL: https://www.tagesspiegel.de</msg>
+<arg>New page opened with URL: ${url}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:28:35.480380" elapsed="0.003990"/>
+</kw>
+<arg>${url}</arg>
+<doc>Opens a new browser page with the specified URL.
+This keyword creates a new page in the browser and navigates to the provided URL.</doc>
+<status status="PASS" start="2024-07-19T12:28:29.579726" elapsed="5.904644"/>
+</kw>
+<arg>${ENV}</arg>
+<doc>Calls Set Environment URL and Open New Page keywords</doc>
+<status status="PASS" start="2024-07-19T12:28:29.566165" elapsed="5.919714"/>
+</kw>
+<kw name="Handle Modal Dialog" owner="basePage">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Check Cookie Frame" owner="basePage">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Get Element" owner="Browser">
+<msg time="2024-07-19T12:28:36.288305" level="INFO">Locator found successfully.</msg>
+<arg>${iframe_selector}</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns a reference to a Playwright [https://playwright.dev/docs/api/class-locator|Locator].</doc>
+<status status="PASS" start="2024-07-19T12:28:35.499186" elapsed="0.789119"/>
+</kw>
+<msg time="2024-07-19T12:28:36.292879" level="INFO">${iframe_present} = True</msg>
+<var>${iframe_present}</var>
+<arg>Get Element</arg>
+<arg>${iframe_selector}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:28:35.498184" elapsed="0.794695"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2024-07-19T12:28:37.280177" level="INFO">Waited for Element with selector id=sp_message_iframe_1038892 at state visible</msg>
+<arg>${iframe_selector}</arg>
+<arg>visible</arg>
+<arg>20s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2024-07-19T12:28:36.294882" elapsed="0.985295"/>
+</kw>
+<arg>${iframe_present}</arg>
+<arg>Wait For Elements State</arg>
+<arg>${iframe_selector}</arg>
+<arg>visible</arg>
+<arg>20s</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:28:36.293886" elapsed="0.986291"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Accept And Verify Cookies" owner="basePage">
+<kw name="Switch To Iframe" owner="basePage">
+<kw name="Set Selector Prefix" owner="Browser">
+<arg>${iframe_selector}</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the prefix for all selectors in the given scope.</doc>
+<status status="PASS" start="2024-07-19T12:28:37.284167" elapsed="0.001001"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:28:37.286670" level="INFO">Switched to iframe: id=sp_message_iframe_1038892 &gt;&gt;&gt;</msg>
+<arg>Switched to iframe: ${iframe_selector}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:28:37.286670" elapsed="0.000000"/>
+</kw>
+<arg>${iframe_num} &gt;&gt;&gt;</arg>
+<doc>Switches to frame</doc>
+<status status="PASS" start="2024-07-19T12:28:37.283169" elapsed="0.003501"/>
+</kw>
+<kw name="Get Element" owner="Browser">
+<msg time="2024-07-19T12:28:37.529907" level="INFO">Locator found successfully.</msg>
+<msg time="2024-07-19T12:28:37.530916" level="INFO">${element} = !prefix id=sp_message_iframe_1038892 &gt;&gt; internal:control=enter-frame &gt;&gt; css=button[title='Alle akzeptieren'][aria-label='Alle akzeptieren']</msg>
+<var>${element}</var>
+<arg>${COOKIE_MODAL_ACCEPT_BUTTON}</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns a reference to a Playwright [https://playwright.dev/docs/api/class-locator|Locator].</doc>
+<status status="PASS" start="2024-07-19T12:28:37.287672" elapsed="0.243244"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2024-07-19T12:28:37.532904" level="INFO">Clicks the element '!prefix id=sp_message_iframe_1038892 &gt;&gt; internal:control=enter-frame &gt;&gt; css=button[title='Alle akzeptieren'][aria-label='Alle akzeptieren']'.</msg>
+<arg>${element}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-07-19T12:28:37.531907" elapsed="0.429770"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:28:37.963668" level="INFO">Cookies accepted</msg>
+<arg>Cookies accepted</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:28:37.962673" elapsed="0.024455"/>
+</kw>
+<arg>${iframe_selector}</arg>
+<doc>Accepts the cookie modal and verifies the next element is visible.</doc>
+<status status="PASS" start="2024-07-19T12:28:37.282172" elapsed="0.704956"/>
+</kw>
+<arg>${iframe_present}</arg>
+<arg>Accept And Verify Cookies</arg>
+<arg>${iframe_selector}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:28:37.281174" elapsed="0.706958"/>
+</kw>
+<kw name="Run Keyword Unless" owner="BuiltIn">
+<msg time="2024-07-19T12:28:37.988132" level="WARN">Keyword 'BuiltIn.Run Keyword Unless' is deprecated. </msg>
+<arg>${iframe_present}</arg>
+<arg>Log</arg>
+<arg>Iframe not found or not visible</arg>
+<arg>console=True</arg>
+<doc>*DEPRECATED since RF 5.0. Use Native IF/ELSE or `Run Keyword If` instead.*</doc>
+<status status="PASS" start="2024-07-19T12:28:37.988132" elapsed="0.003990"/>
+</kw>
+<arg>${iframe_num}</arg>
+<doc>Accepts cookie modal</doc>
+<status status="PASS" start="2024-07-19T12:28:35.497100" elapsed="2.495022"/>
+</kw>
+<arg>3x</arg>
+<arg>2s</arg>
+<arg>Check Cookie Frame</arg>
+<arg>${iframe_num}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2024-07-19T12:28:35.497100" elapsed="2.496022"/>
+</kw>
+<arg>${COOKIE_MODAL_IFRAME}</arg>
+<doc>Handles a modal dialog, such as an accept cookies popup, within a specified iframe.
+This keyword is used to interact with and accept a modal dialog that might appear within an iframe.
+It uses a retry mechanism to attempt handling the modal multiple times if it is not immediately available.</doc>
+<status status="PASS" start="2024-07-19T12:28:35.496096" elapsed="2.497026"/>
+</kw>
+<kw name="Switch Back To Default Content" owner="basePage">
+<kw name="Set Selector Prefix" owner="Browser">
+<arg>${None}</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the prefix for all selectors in the given scope.</doc>
+<status status="PASS" start="2024-07-19T12:28:37.996112" elapsed="0.001994"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:28:37.999103" level="INFO">Switched back to default content</msg>
+<arg>Switched back to default content</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:28:37.998106" elapsed="0.000997"/>
+</kw>
+<doc>Returns focus from frame back to the main content of the webpage.</doc>
+<status status="PASS" start="2024-07-19T12:28:37.995117" elapsed="0.004985"/>
+</kw>
+<kw name="Click Button" owner="basePage">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Click" owner="Browser">
+<msg time="2024-07-19T12:28:38.006086" level="INFO">Clicks the element 'css=a.menu__profile[href='https://mein.tagesspiegel.de'][title='Melden Sie sich mit Ihrem Tagesspiegel-Konto an']'.</msg>
+<arg>${button}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-07-19T12:28:38.004091" elapsed="0.176923"/>
+</kw>
+<msg time="2024-07-19T12:28:38.181433" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Click</arg>
+<arg>${button}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:28:38.003094" elapsed="0.178339"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status} == False</arg>
+<arg>Log</arg>
+<arg>Failed to click on ${button}</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:28:38.182431" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:28:38.184425" level="INFO">Clicked on css=a.menu__profile[href='https://mein.tagesspiegel.de'][title='Melden Sie sich mit Ihrem Tagesspiegel-Konto an']</msg>
+<arg>Clicked on ${button}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:28:38.183428" elapsed="0.001994"/>
+</kw>
+<arg>${ANMELDEN_BUTTON}</arg>
+<doc>Clicks button based on the provided locator</doc>
+<status status="PASS" start="2024-07-19T12:28:38.001098" elapsed="0.185142"/>
+</kw>
+<kw name="Navigate to Registration Tab" owner="registrationPage">
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:28:38.188974" level="INFO">Switching to registration window iframe</msg>
+<arg>Switching to registration window iframe</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:28:38.187978" elapsed="0.000996"/>
+</kw>
+<kw name="Switch To Iframe" owner="basePage">
+<kw name="Set Selector Prefix" owner="Browser">
+<arg>${iframe_selector}</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the prefix for all selectors in the given scope.</doc>
+<status status="PASS" start="2024-07-19T12:28:38.191158" elapsed="0.002413"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:28:38.194568" level="INFO">Switched to iframe: iframe#modal-iframe &gt;&gt;&gt;</msg>
+<arg>Switched to iframe: ${iframe_selector}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:28:38.194568" elapsed="0.000000"/>
+</kw>
+<arg>${REGISTRATION_IFRAME} &gt;&gt;&gt;</arg>
+<doc>Switches to frame</doc>
+<status status="PASS" start="2024-07-19T12:28:38.189973" elapsed="0.005592"/>
+</kw>
+<kw name="Verify Element Is Visible" owner="basePage">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2024-07-19T12:28:49.103377" level="INFO">Waited for Element with selector iframe#modal-iframe &gt;&gt;&gt; css=button[data-nav-item='register'] at state visible</msg>
+<arg>${element}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2024-07-19T12:28:38.198557" elapsed="10.904820"/>
+</kw>
+<msg time="2024-07-19T12:28:49.103377" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Wait For Elements State</arg>
+<arg>${element}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:28:38.197560" elapsed="10.905817"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status} == False</arg>
+<arg>Log</arg>
+<arg>Element ${element} not visible within timeout</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:28:49.103377" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:28:49.103377" level="INFO">Verified visibility of element: css=button[data-nav-item='register']</msg>
+<arg>Verified visibility of element: ${element}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:28:49.103377" elapsed="0.015628"/>
+</kw>
+<arg>${REGISTRATION_TAB_BUTTON}</arg>
+<doc>This keyword checks whether the element identified by the provided locator is visible within the specified timeout period.
+If the element is not visible within the timeout, the keyword will fail, indicating that the element is not present or not visible.</doc>
+<status status="PASS" start="2024-07-19T12:28:38.196562" elapsed="10.922443"/>
+</kw>
+<kw name="Get Element" owner="Browser">
+<msg time="2024-07-19T12:28:49.209566" level="INFO">Locator found successfully.</msg>
+<msg time="2024-07-19T12:28:49.209566" level="INFO">${element} = !prefix iframe#modal-iframe &gt;&gt; internal:control=enter-frame &gt;&gt; css=button[data-nav-item='register']</msg>
+<var>${element}</var>
+<arg>${REGISTRATION_TAB_BUTTON}</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns a reference to a Playwright [https://playwright.dev/docs/api/class-locator|Locator].</doc>
+<status status="PASS" start="2024-07-19T12:28:49.119005" elapsed="0.090561"/>
+</kw>
+<kw name="Get Attribute" owner="Browser">
+<msg time="2024-07-19T12:28:49.271945" level="INFO">Attribute is: 'modal-tabs-nav-item'</msg>
+<msg time="2024-07-19T12:28:49.271945" level="INFO">${class_name} = modal-tabs-nav-item</msg>
+<var>${class_name}</var>
+<arg>${element}</arg>
+<arg>class</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the HTML ``attribute`` of the element found by ``selector``.</doc>
+<status status="PASS" start="2024-07-19T12:28:49.209566" elapsed="0.062379"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Should Not Contain" owner="BuiltIn">
+<arg>${class_name}</arg>
+<arg>active</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" start="2024-07-19T12:28:49.271945" elapsed="0.000000"/>
+</kw>
+<msg time="2024-07-19T12:28:49.271945" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Should Not Contain</arg>
+<arg>${class_name}</arg>
+<arg>active</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:28:49.271945" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status} == False</arg>
+<arg>Log</arg>
+<arg>Registration tab button is already active</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:28:49.271945" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Click Button" owner="basePage">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Click" owner="Browser">
+<msg time="2024-07-19T12:28:49.271945" level="INFO">Clicks the element 'css=button[data-nav-item='register']'.</msg>
+<arg>${button}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-07-19T12:28:49.271945" elapsed="4.261522"/>
+</kw>
+<msg time="2024-07-19T12:28:53.534460" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Click</arg>
+<arg>${button}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:28:49.271945" elapsed="4.262515"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status} == False</arg>
+<arg>Log</arg>
+<arg>Failed to click on ${button}</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:28:53.535463" elapsed="0.000994"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:28:53.537452" level="INFO">Clicked on css=button[data-nav-item='register']</msg>
+<arg>Clicked on ${button}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:28:53.537452" elapsed="0.007979"/>
+</kw>
+<arg>${REGISTRATION_TAB_BUTTON}</arg>
+<doc>Clicks button based on the provided locator</doc>
+<status status="PASS" start="2024-07-19T12:28:49.271945" elapsed="4.273486"/>
+</kw>
+<msg time="2024-07-19T12:28:53.546430" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Click Button</arg>
+<arg>${REGISTRATION_TAB_BUTTON}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:28:49.271945" elapsed="4.274485"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status} == False</arg>
+<arg>Log</arg>
+<arg>Failed to click on Registration Tab button</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:28:53.547362" elapsed="0.001201"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:28:53.549557" level="INFO">Navigated to the Registration modal</msg>
+<arg>Navigated to the Registration modal</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:28:53.548563" elapsed="0.000994"/>
+</kw>
+<doc>Navigates to the registration tab within an iframe.</doc>
+<status status="PASS" start="2024-07-19T12:28:38.186974" elapsed="15.363580"/>
+</kw>
+<kw name="Fill Registration Form" owner="registrationPage">
+<kw name="Verify Element Is Visible" owner="basePage">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2024-07-19T12:28:53.698767" level="INFO">Waited for Element with selector iframe#modal-iframe &gt;&gt;&gt; id=forms/formRegistration_email at state visible</msg>
+<arg>${element}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2024-07-19T12:28:53.553545" elapsed="0.146219"/>
+</kw>
+<msg time="2024-07-19T12:28:53.699764" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Wait For Elements State</arg>
+<arg>${element}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:28:53.552549" elapsed="0.147215"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status} == False</arg>
+<arg>Log</arg>
+<arg>Element ${element} not visible within timeout</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:28:53.699764" elapsed="0.000997"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:28:53.700761" level="INFO">Verified visibility of element: id=forms/formRegistration_email</msg>
+<arg>Verified visibility of element: ${element}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:28:53.700761" elapsed="0.000998"/>
+</kw>
+<arg>${EMAIL_INPUT}</arg>
+<doc>This keyword checks whether the element identified by the provided locator is visible within the specified timeout period.
+If the element is not visible within the timeout, the keyword will fail, indicating that the element is not present or not visible.</doc>
+<status status="PASS" start="2024-07-19T12:28:53.552549" elapsed="0.149210"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Type Text" owner="Browser">
+<msg time="2024-07-19T12:28:53.703755" level="INFO">Types the text 'ramyatagesspiegel+3aIMYGe7tD@gmail.com' in the given field.</msg>
+<arg>${EMAIL_INPUT}</arg>
+<arg>${email}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-07-19T12:28:53.702756" elapsed="0.655171"/>
+</kw>
+<arg>Type Text</arg>
+<arg>${EMAIL_INPUT}</arg>
+<arg>${email}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:28:53.702756" elapsed="0.655171"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:28:54.359921" level="INFO">Failed to enter email: ramyatagesspiegel+3aIMYGe7tD@gmail.com</msg>
+<arg>Failed to enter email: ${email}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:28:54.358924" elapsed="0.004986"/>
+</kw>
+<msg time="2024-07-19T12:28:54.363910" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Log</arg>
+<arg>Failed to enter email: ${email}</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:28:54.358924" elapsed="0.004986"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status} == False</arg>
+<arg>Log</arg>
+<arg>Failed to enter email: ${email}</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:28:54.363910" elapsed="0.000998"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:28:54.364908" level="INFO">Entered email: ramyatagesspiegel+3aIMYGe7tD@gmail.com</msg>
+<arg>Entered email: ${email}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:28:54.364908" elapsed="0.000998"/>
+</kw>
+<kw name="Verify Element Is Visible" owner="basePage">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2024-07-19T12:28:54.408321" level="INFO">Waited for Element with selector iframe#modal-iframe &gt;&gt;&gt; id=forms/formRegistration_forename at state visible</msg>
+<arg>${element}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2024-07-19T12:28:54.371898" elapsed="0.036423"/>
+</kw>
+<msg time="2024-07-19T12:28:54.408321" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Wait For Elements State</arg>
+<arg>${element}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:28:54.368905" elapsed="0.039416"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status} == False</arg>
+<arg>Log</arg>
+<arg>Element ${element} not visible within timeout</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:28:54.409318" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:28:54.410315" level="INFO">Verified visibility of element: id=forms/formRegistration_forename</msg>
+<arg>Verified visibility of element: ${element}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:28:54.410315" elapsed="0.000997"/>
+</kw>
+<arg>${FIRST_NAME_INPUT}</arg>
+<doc>This keyword checks whether the element identified by the provided locator is visible within the specified timeout period.
+If the element is not visible within the timeout, the keyword will fail, indicating that the element is not present or not visible.</doc>
+<status status="PASS" start="2024-07-19T12:28:54.365906" elapsed="0.045406"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Type Text" owner="Browser">
+<msg time="2024-07-19T12:28:54.413307" level="INFO">Types the text 'Test' in the given field.</msg>
+<arg>${FIRST_NAME_INPUT}</arg>
+<arg>${first_name}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-07-19T12:28:54.412310" elapsed="0.236032"/>
+</kw>
+<msg time="2024-07-19T12:28:54.648342" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Type Text</arg>
+<arg>${FIRST_NAME_INPUT}</arg>
+<arg>${first_name}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:28:54.412310" elapsed="0.236032"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status} == False</arg>
+<arg>Log</arg>
+<arg>Failed to enter first name: ${first_name}</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:28:54.649341" elapsed="0.000998"/>
+</kw>
+<kw name="Type Text" owner="Browser">
+<msg time="2024-07-19T12:28:54.652330" level="INFO">Types the text 'Test' in the given field.</msg>
+<arg>${FIRST_NAME_INPUT}</arg>
+<arg>${first_name}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-07-19T12:28:54.650339" elapsed="0.266645"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:28:54.917980" level="INFO">Entered first name: Test</msg>
+<arg>Entered first name: ${first_name}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:28:54.917980" elapsed="0.005641"/>
+</kw>
+<kw name="Verify Element Is Visible" owner="basePage">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2024-07-19T12:28:55.001643" level="INFO">Waited for Element with selector iframe#modal-iframe &gt;&gt;&gt; id=forms/formRegistration_surname at state visible</msg>
+<arg>${element}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2024-07-19T12:28:54.926836" elapsed="0.075806"/>
+</kw>
+<msg time="2024-07-19T12:28:55.003639" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Wait For Elements State</arg>
+<arg>${element}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:28:54.925839" elapsed="0.077800"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status} == False</arg>
+<arg>Log</arg>
+<arg>Element ${element} not visible within timeout</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:28:55.003639" elapsed="0.001512"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:28:55.006162" level="INFO">Verified visibility of element: id=forms/formRegistration_surname</msg>
+<arg>Verified visibility of element: ${element}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:28:55.005151" elapsed="0.002006"/>
+</kw>
+<arg>${LAST_NAME_INPUT}</arg>
+<doc>This keyword checks whether the element identified by the provided locator is visible within the specified timeout period.
+If the element is not visible within the timeout, the keyword will fail, indicating that the element is not present or not visible.</doc>
+<status status="PASS" start="2024-07-19T12:28:54.924798" elapsed="0.083357"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Type Text" owner="Browser">
+<msg time="2024-07-19T12:28:55.012144" level="INFO">Types the text 'User' in the given field.</msg>
+<arg>${LAST_NAME_INPUT}</arg>
+<arg>${last_name}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-07-19T12:28:55.011145" elapsed="0.284969"/>
+</kw>
+<msg time="2024-07-19T12:28:55.297111" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Type Text</arg>
+<arg>${LAST_NAME_INPUT}</arg>
+<arg>${last_name}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:28:55.008155" elapsed="0.288956"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status} == False</arg>
+<arg>Log</arg>
+<arg>Failed to enter last name: ${last_name}</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:28:55.298109" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:28:55.299106" level="INFO">Entered last name: User</msg>
+<arg>Entered last name: ${last_name}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:28:55.299106" elapsed="0.006427"/>
+</kw>
+<arg>${random_email}</arg>
+<arg>${FIRST_NAME}</arg>
+<arg>${LAST_NAME}</arg>
+<doc>Fills the registration form with provided email, first name, and last name.</doc>
+<status status="PASS" start="2024-07-19T12:28:53.551552" elapsed="1.754492"/>
+</kw>
+<kw name="Click Button" owner="basePage">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Click" owner="Browser">
+<msg time="2024-07-19T12:28:55.311038" level="INFO">Clicks the element 'text=Jetzt registrieren'.</msg>
+<arg>${button}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-07-19T12:28:55.309043" elapsed="0.235180"/>
+</kw>
+<msg time="2024-07-19T12:28:55.545209" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Click</arg>
+<arg>${button}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:28:55.308046" elapsed="0.237163"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status} == False</arg>
+<arg>Log</arg>
+<arg>Failed to click on ${button}</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:28:55.545893" elapsed="0.000531"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:28:55.548424" level="INFO">Clicked on text=Jetzt registrieren</msg>
+<arg>Clicked on ${button}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:28:55.548424" elapsed="0.002992"/>
+</kw>
+<arg>${REGISTER_BUTTON}</arg>
+<doc>Clicks button based on the provided locator</doc>
+<status status="PASS" start="2024-07-19T12:28:55.307048" elapsed="0.245366"/>
+</kw>
+<kw name="Switch Back To Default Content" owner="basePage">
+<kw name="Set Selector Prefix" owner="Browser">
+<arg>${None}</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the prefix for all selectors in the given scope.</doc>
+<status status="PASS" start="2024-07-19T12:28:55.554407" elapsed="0.000999"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:28:55.556402" level="INFO">Switched back to default content</msg>
+<arg>Switched back to default content</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:28:55.556402" elapsed="0.000998"/>
+</kw>
+<doc>Returns focus from frame back to the main content of the webpage.</doc>
+<status status="PASS" start="2024-07-19T12:28:55.553410" elapsed="0.003990"/>
+</kw>
+<kw name="Close Registration Modal" owner="registrationPage">
+<kw name="Verify Element Is Visible" owner="basePage">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2024-07-19T12:28:58.771795" level="INFO">Waited for Element with selector id=sso-flash-close at state visible</msg>
+<arg>${element}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2024-07-19T12:28:55.562387" elapsed="3.209408"/>
+</kw>
+<msg time="2024-07-19T12:28:58.771795" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Wait For Elements State</arg>
+<arg>${element}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:28:55.562387" elapsed="3.209408"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status} == False</arg>
+<arg>Log</arg>
+<arg>Element ${element} not visible within timeout</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:28:58.771795" elapsed="0.001509"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:28:58.774309" level="INFO">Verified visibility of element: id=sso-flash-close</msg>
+<arg>Verified visibility of element: ${element}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:28:58.773304" elapsed="0.002008"/>
+</kw>
+<arg>${CLOSE_REGISTRATION}</arg>
+<doc>This keyword checks whether the element identified by the provided locator is visible within the specified timeout period.
+If the element is not visible within the timeout, the keyword will fail, indicating that the element is not present or not visible.</doc>
+<status status="PASS" start="2024-07-19T12:28:55.560391" elapsed="3.214921"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Click" owner="Browser">
+<msg time="2024-07-19T12:28:58.777429" level="INFO">Clicks the element 'id=sso-flash-close'.</msg>
+<arg>${CLOSE_REGISTRATION}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-07-19T12:28:58.776309" elapsed="0.094978"/>
+</kw>
+<msg time="2024-07-19T12:28:58.872284" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Click</arg>
+<arg>${CLOSE_REGISTRATION}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:28:58.775312" elapsed="0.096972"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status} == False</arg>
+<arg>Log</arg>
+<arg>Failed to close registration modal</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:28:58.872284" elapsed="0.000999"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:28:58.874280" level="INFO">Closed Registration modal</msg>
+<arg>Closed Registration modal</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:28:58.873283" elapsed="0.003990"/>
+</kw>
+<doc>Closes registration modal.</doc>
+<status status="PASS" start="2024-07-19T12:28:55.559395" elapsed="3.317878"/>
+</kw>
+<kw name="Wait For Registration Email" owner="emailPage">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-07-19T12:29:05.881075" level="INFO">Slept 7 seconds.</msg>
+<arg>7s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-07-19T12:28:58.880264" elapsed="7.000811"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:29:05.883754" level="INFO">Email : ramyatagesspiegel@gmail.com@gmail.com</msg>
+<arg>Email : ${EMAIL}@${EMAIL_DOMAIN}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:29:05.882075" elapsed="0.004135"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:29:05.888205" level="INFO">Password: elxb vzbf didt egyz</msg>
+<arg>Password: ${EMAIL_PWD}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:29:05.887209" elapsed="0.002771"/>
+</kw>
+<kw name="Authorize Imap" owner="RPA.Email.ImapSmtp">
+<arg>${EMAILID}</arg>
+<arg>${EMAIL_PWD}</arg>
+<arg>${EMAIL_SERVER}</arg>
+<arg>${IMAP_PORT}</arg>
+<doc>Authorize to IMAP server.</doc>
+<status status="PASS" start="2024-07-19T12:29:05.895964" elapsed="0.726389"/>
+</kw>
+<kw name="Wait For Message" owner="RPA.Email.ImapSmtp">
+<msg time="2024-07-19T12:29:07.059569" level="INFO">IMAP search: 'SUBJECT "Herzlich Willkommen beim Tagesspiegel"'</msg>
+<msg time="2024-07-19T12:29:07.815389" level="INFO">${result} = dict_values([{'Mail-Id': '10', 'Message': &lt;email.message.Message object at 0x0000025843FC7450&gt;, 'Body': '&lt;!DOCTYPE html&gt;\r\n&lt;html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-mi...</msg>
+<var>${result}</var>
+<arg>SUBJECT "${EMAIL_SUBJECT}"</arg>
+<arg>timeout=300</arg>
+<arg>interval=10</arg>
+<doc>Wait for email matching `criterion` to arrive into mailbox.</doc>
+<status status="PASS" start="2024-07-19T12:29:06.622973" elapsed="1.192416"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:29:07.816386" level="INFO">Received Registration email</msg>
+<arg>Received Registration email</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:29:07.816386" elapsed="0.000998"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" start="2024-07-19T12:29:07.817384" elapsed="0.000998"/>
+</return>
+<msg time="2024-07-19T12:29:07.822370" level="INFO">${search_result} = dict_values([{'Mail-Id': '10', 'Message': &lt;email.message.Message object at 0x0000025843FC7450&gt;, 'Body': '&lt;!DOCTYPE html&gt;\r\n&lt;html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-mi...</msg>
+<var>${search_result}</var>
+<arg>${EMAILID}</arg>
+<arg>${EMAIL_PWD}</arg>
+<arg>${EMAIL_SERVER}</arg>
+<arg>${IMAP_PORT}</arg>
+<arg>${EMAIL_SUBJECT}</arg>
+<doc>Waits for Registration confirmation email</doc>
+<status status="PASS" start="2024-07-19T12:28:58.879266" elapsed="8.943104"/>
+</kw>
+<kw name="Get Registration Link From Email" owner="emailPage">
+<kw name="Convert To Lower Case" owner="String">
+<msg time="2024-07-19T12:29:07.845209" level="INFO">${lowercase_registered_email} = ramyatagesspiegel+3aimyge7td@gmail.com</msg>
+<var>${lowercase_registered_email}</var>
+<arg>${registered_email}</arg>
+<doc>Converts string to lower case.</doc>
+<status status="PASS" start="2024-07-19T12:29:07.839216" elapsed="0.005993"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-07-19T12:29:07.853186" level="INFO">${verification_link} = None</msg>
+<var>${verification_link}</var>
+<arg>None</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-07-19T12:29:07.848199" elapsed="0.004987"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-07-19T12:29:07.878640" level="INFO">${from_email} = Tagesspiegel Leserservice &lt;leserservice@tagesspiegel.de&gt;</msg>
+<var>${from_email}</var>
+<arg>${message}</arg>
+<arg>From</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-07-19T12:29:07.870659" elapsed="0.008977"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-07-19T12:29:07.898101" level="INFO">${to_email} = ramyatagesspiegel+s1hksympvb@gmail.com</msg>
+<var>${to_email}</var>
+<arg>${message}</arg>
+<arg>To</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-07-19T12:29:07.887616" elapsed="0.011481"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-07-19T12:29:07.913582" level="INFO">${condition} = False</msg>
+<var>${condition}</var>
+<arg>'${from_email}' == '${email_from}' and '${to_email}' == '${lowercase_registered_email}'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-07-19T12:29:07.901092" elapsed="0.013487"/>
+</kw>
+<if>
+<branch type="IF" condition="${condition}">
+<kw name="Get From Dictionary" owner="Collections">
+<var>${body_value}</var>
+<arg>${message}</arg>
+<arg>Body</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" start="2024-07-19T12:29:07.917573" elapsed="0.000000"/>
+</kw>
+<kw name="Extract Verification Link" owner="emailPage">
+<var>${verification_link}</var>
+<arg>${body_value}</arg>
+<arg>${url_regexp}</arg>
+<doc>Extracts verification link from the Email</doc>
+<status status="NOT RUN" start="2024-07-19T12:29:07.919565" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="'${verification_link}' == 'None'">
+<kw name="Log" owner="BuiltIn">
+<arg>No verification link found in the email body.</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-19T12:29:07.923555" elapsed="0.000997"/>
+</kw>
+<status status="NOT RUN" start="2024-07-19T12:29:07.920563" elapsed="0.004988"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" owner="BuiltIn">
+<arg>Verification link found: ${verification_link}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-19T12:29:07.926547" elapsed="0.000996"/>
+</kw>
+<status status="NOT RUN" start="2024-07-19T12:29:07.925551" elapsed="0.001992"/>
+</branch>
+<status status="NOT RUN" start="2024-07-19T12:29:07.920563" elapsed="0.006980"/>
+</if>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2024-07-19T12:29:07.929539" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-07-19T12:29:07.916574" elapsed="0.013962"/>
+</branch>
+<status status="PASS" start="2024-07-19T12:29:07.915575" elapsed="0.014961"/>
+</if>
+<var name="${message}">{'Mail-Id': '10', 'Message': &lt;email.message.Message object at 0x0000025843FC7450&gt;, 'Body': '&lt;!DOCTYPE html&gt;\r\n&lt;html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:v...</var>
+<status status="PASS" start="2024-07-19T12:29:07.867668" elapsed="0.062868"/>
+</iter>
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-07-19T12:29:07.936520" level="INFO">${from_email} = Tagesspiegel Leserservice &lt;leserservice@tagesspiegel.de&gt;</msg>
+<var>${from_email}</var>
+<arg>${message}</arg>
+<arg>From</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-07-19T12:29:07.934526" elapsed="0.001994"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-07-19T12:29:07.939513" level="INFO">${to_email} = ramyatagesspiegel+hswgqszdoq@gmail.com</msg>
+<var>${to_email}</var>
+<arg>${message}</arg>
+<arg>To</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-07-19T12:29:07.937517" elapsed="0.001996"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-07-19T12:29:07.946936" level="INFO">${condition} = False</msg>
+<var>${condition}</var>
+<arg>'${from_email}' == '${email_from}' and '${to_email}' == '${lowercase_registered_email}'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-07-19T12:29:07.942947" elapsed="0.003989"/>
+</kw>
+<if>
+<branch type="IF" condition="${condition}">
+<kw name="Get From Dictionary" owner="Collections">
+<var>${body_value}</var>
+<arg>${message}</arg>
+<arg>Body</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" start="2024-07-19T12:29:07.949927" elapsed="0.000000"/>
+</kw>
+<kw name="Extract Verification Link" owner="emailPage">
+<var>${verification_link}</var>
+<arg>${body_value}</arg>
+<arg>${url_regexp}</arg>
+<doc>Extracts verification link from the Email</doc>
+<status status="NOT RUN" start="2024-07-19T12:29:07.951923" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="'${verification_link}' == 'None'">
+<kw name="Log" owner="BuiltIn">
+<arg>No verification link found in the email body.</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-19T12:29:07.952921" elapsed="0.000996"/>
+</kw>
+<status status="NOT RUN" start="2024-07-19T12:29:07.951923" elapsed="0.001994"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" owner="BuiltIn">
+<arg>Verification link found: ${verification_link}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-19T12:29:07.955872" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-07-19T12:29:07.953917" elapsed="0.001955"/>
+</branch>
+<status status="NOT RUN" start="2024-07-19T12:29:07.951923" elapsed="0.003949"/>
+</if>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2024-07-19T12:29:07.957872" elapsed="0.000997"/>
+</kw>
+<status status="NOT RUN" start="2024-07-19T12:29:07.947933" elapsed="0.011813"/>
+</branch>
+<status status="PASS" start="2024-07-19T12:29:07.947933" elapsed="0.011911"/>
+</if>
+<var name="${message}">{'Mail-Id': '11', 'Message': &lt;email.message.Message object at 0x0000025843FD8850&gt;, 'Body': '&lt;!DOCTYPE html&gt;\r\n&lt;html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:v...</var>
+<status status="PASS" start="2024-07-19T12:29:07.934526" elapsed="0.025318"/>
+</iter>
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-07-19T12:29:07.967829" level="INFO">${from_email} = Tagesspiegel Leserservice &lt;leserservice@tagesspiegel.de&gt;</msg>
+<var>${from_email}</var>
+<arg>${message}</arg>
+<arg>From</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-07-19T12:29:07.965833" elapsed="0.001996"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-07-19T12:29:07.970819" level="INFO">${to_email} = ramyatagesspiegel+3aimyge7td@gmail.com</msg>
+<var>${to_email}</var>
+<arg>${message}</arg>
+<arg>To</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-07-19T12:29:07.969822" elapsed="0.001994"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-07-19T12:29:07.983996" level="INFO">${condition} = True</msg>
+<var>${condition}</var>
+<arg>'${from_email}' == '${email_from}' and '${to_email}' == '${lowercase_registered_email}'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-07-19T12:29:07.980006" elapsed="0.003990"/>
+</kw>
+<if>
+<branch type="IF" condition="${condition}">
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-07-19T12:29:07.989982" level="INFO">${body_value} = &lt;!DOCTYPE html&gt;
+&lt;html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt; &lt;!-...</msg>
+<var>${body_value}</var>
+<arg>${message}</arg>
+<arg>Body</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-07-19T12:29:07.986987" elapsed="0.003991"/>
+</kw>
+<kw name="Extract Verification Link" owner="emailPage">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-07-19T12:29:07.999975" level="INFO">${found_link} = None</msg>
+<var>${found_link}</var>
+<arg>None</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-07-19T12:29:07.997981" elapsed="0.001994"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-07-19T12:29:08.009997" level="INFO">${urls} = ['https://mein.tagesspiegel.de/verify-token/a1655871bc487d50632887287bc508d9ecf1d5da', 'https://mein.tagesspiegel.de/verify-token/a1655871bc487d50632887287bc508d9ecf1d5da']</msg>
+<var>${urls}</var>
+<arg>re.findall(r"${url_regexp}", """${mail_body}""")</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-07-19T12:29:08.000972" elapsed="0.009025"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2024-07-19T12:29:08.012504" level="INFO">Length is 2.</msg>
+<msg time="2024-07-19T12:29:08.012504" level="INFO">${urls_length} = 2</msg>
+<var>${urls_length}</var>
+<arg>${urls}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2024-07-19T12:29:08.010994" elapsed="0.002512"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${urls_length} == 0</arg>
+<arg>Log</arg>
+<arg>No matching links found in the email body.</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:29:08.014505" elapsed="0.000997"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:29:08.019494" level="INFO">Matching links found: ['https://mein.tagesspiegel.de/verify-token/a1655871bc487d50632887287bc508d9ecf1d5da', 'https://mein.tagesspiegel.de/verify-token/a1655871bc487d50632887287bc508d9ecf1d5da']</msg>
+<arg>Matching links found: ${urls}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:29:08.018494" elapsed="0.001996"/>
+</kw>
+<arg>${urls_length} &gt; 0</arg>
+<arg>Log</arg>
+<arg>Matching links found: ${urls}</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:29:08.016498" elapsed="0.004988"/>
+</kw>
+<if>
+<branch type="IF" condition="${urls_length} &gt; 0">
+<kw name="Get From List" owner="Collections">
+<msg time="2024-07-19T12:29:08.031405" level="INFO">${found_link} = https://mein.tagesspiegel.de/verify-token/a1655871bc487d50632887287bc508d9ecf1d5da</msg>
+<var>${found_link}</var>
+<arg>${urls}</arg>
+<arg>0</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" start="2024-07-19T12:29:08.027479" elapsed="0.004923"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:29:08.036390" level="INFO">Found link: https://mein.tagesspiegel.de/verify-token/a1655871bc487d50632887287bc508d9ecf1d5da</msg>
+<arg>Found link: ${found_link}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:29:08.034395" elapsed="0.003990"/>
+</kw>
+<status status="PASS" start="2024-07-19T12:29:08.023482" elapsed="0.022364"/>
+</branch>
+<status status="PASS" start="2024-07-19T12:29:08.023482" elapsed="0.025350"/>
+</if>
+<return>
+<value>${found_link}</value>
+<status status="PASS" start="2024-07-19T12:29:08.049829" elapsed="0.000000"/>
+</return>
+<msg time="2024-07-19T12:29:08.050826" level="INFO">${verification_link} = https://mein.tagesspiegel.de/verify-token/a1655871bc487d50632887287bc508d9ecf1d5da</msg>
+<var>${verification_link}</var>
+<arg>${body_value}</arg>
+<arg>${url_regexp}</arg>
+<doc>Extracts verification link from the Email</doc>
+<status status="PASS" start="2024-07-19T12:29:07.994972" elapsed="0.056851"/>
+</kw>
+<if>
+<branch type="IF" condition="'${verification_link}' == 'None'">
+<kw name="Log" owner="BuiltIn">
+<arg>No verification link found in the email body.</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-19T12:29:08.053819" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-07-19T12:29:08.051823" elapsed="0.002993"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:29:08.062311" level="INFO">Verification link found: https://mein.tagesspiegel.de/verify-token/a1655871bc487d50632887287bc508d9ecf1d5da</msg>
+<arg>Verification link found: ${verification_link}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:29:08.060316" elapsed="0.002991"/>
+</kw>
+<status status="PASS" start="2024-07-19T12:29:08.057810" elapsed="0.005497"/>
+</branch>
+<status status="PASS" start="2024-07-19T12:29:08.051823" elapsed="0.011484"/>
+</if>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2024-07-19T12:29:08.065302" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2024-07-19T12:29:08.064305" elapsed="0.000997"/>
+</kw>
+<status status="PASS" start="2024-07-19T12:29:07.984993" elapsed="0.081307"/>
+</branch>
+<status status="PASS" start="2024-07-19T12:29:07.984993" elapsed="0.081307"/>
+</if>
+<var name="${message}">{'Mail-Id': '12', 'Message': &lt;email.message.Message object at 0x0000025843FDA310&gt;, 'Body': '&lt;!DOCTYPE html&gt;\r\n&lt;html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:v...</var>
+<status status="PASS" start="2024-07-19T12:29:07.963838" elapsed="0.102462"/>
+</iter>
+<var>${message}</var>
+<value>@{search_result}</value>
+<status status="PASS" start="2024-07-19T12:29:07.862682" elapsed="0.204615"/>
+</for>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${verification_link}' == 'None'</arg>
+<arg>Log</arg>
+<arg>No email matching the criteria was found.</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:29:08.068295" elapsed="0.000997"/>
+</kw>
+<return>
+<value>${verification_link}</value>
+<status status="PASS" start="2024-07-19T12:29:08.070289" elapsed="0.000000"/>
+</return>
+<msg time="2024-07-19T12:29:08.072285" level="INFO">${registration_link} = https://mein.tagesspiegel.de/verify-token/a1655871bc487d50632887287bc508d9ecf1d5da</msg>
+<var>${registration_link}</var>
+<arg>${search_result}</arg>
+<arg>${random_email}</arg>
+<arg>${EMAIL_FROM}</arg>
+<arg>${URL_REGEXP}</arg>
+<doc>Parses the Mail</doc>
+<status status="PASS" start="2024-07-19T12:29:07.833232" elapsed="0.240050"/>
+</kw>
+<kw name="Open Verification Link to fill Password Form" owner="passwordFormPage">
+<kw name="Open New Page" owner="basePage">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="New Page" owner="Browser">
+<msg time="2024-07-19T12:29:12.940392" level="INFO">Successfully initialized new page object and opened url: https://mein.tagesspiegel.de/verify-token/a1655871bc487d50632887287bc508d9ecf1d5da</msg>
+<arg>${url}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2024-07-19T12:29:08.095224" elapsed="4.845168"/>
+</kw>
+<msg time="2024-07-19T12:29:12.940392" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>New Page</arg>
+<arg>${url}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:29:08.090237" elapsed="4.850155"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status} == False</arg>
+<arg>Log</arg>
+<arg>Failed to open page with URL: ${url}</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:29:12.940392" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:29:12.954572" level="INFO">New page opened with URL: https://mein.tagesspiegel.de/verify-token/a1655871bc487d50632887287bc508d9ecf1d5da</msg>
+<arg>New page opened with URL: ${url}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:29:12.940392" elapsed="0.015844"/>
+</kw>
+<arg>${verification_link}</arg>
+<doc>Opens a new browser page with the specified URL.
+This keyword creates a new page in the browser and navigates to the provided URL.</doc>
+<status status="PASS" start="2024-07-19T12:29:08.085249" elapsed="4.871986"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Verify Element Is Visible" owner="basePage">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2024-07-19T12:29:13.060816" level="INFO">Waited for Element with selector id=forms/formSetPassword_password at state visible</msg>
+<arg>${element}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2024-07-19T12:29:12.960226" elapsed="0.100590"/>
+</kw>
+<msg time="2024-07-19T12:29:13.061814" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Wait For Elements State</arg>
+<arg>${element}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:29:12.959228" elapsed="0.102586"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status} == False</arg>
+<arg>Log</arg>
+<arg>Element ${element} not visible within timeout</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.062812" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:29:13.064806" level="INFO">Verified visibility of element: id=forms/formSetPassword_password</msg>
+<arg>Verified visibility of element: ${element}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.063808" elapsed="0.002992"/>
+</kw>
+<arg>${PASSWORD_INPUT}</arg>
+<doc>This keyword checks whether the element identified by the provided locator is visible within the specified timeout period.
+If the element is not visible within the timeout, the keyword will fail, indicating that the element is not present or not visible.</doc>
+<status status="PASS" start="2024-07-19T12:29:12.958231" elapsed="0.108569"/>
+</kw>
+<arg>Verify Element Is Visible</arg>
+<arg>${PASSWORD_INPUT}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2024-07-19T12:29:12.957235" elapsed="0.109565"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Verify Element Is Visible" owner="basePage">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2024-07-19T12:29:13.092817" level="INFO">Waited for Element with selector id=forms/formSetPassword_password at state visible</msg>
+<arg>${element}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.071786" elapsed="0.022027"/>
+</kw>
+<msg time="2024-07-19T12:29:13.093813" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Wait For Elements State</arg>
+<arg>${element}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.070789" elapsed="0.023024"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status} == False</arg>
+<arg>Log</arg>
+<arg>Element ${element} not visible within timeout</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.094814" elapsed="0.000994"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:29:13.096805" level="INFO">Verified visibility of element: id=forms/formSetPassword_password</msg>
+<arg>Verified visibility of element: ${element}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.096805" elapsed="0.016910"/>
+</kw>
+<arg>${PASSWORD_INPUT}</arg>
+<doc>This keyword checks whether the element identified by the provided locator is visible within the specified timeout period.
+If the element is not visible within the timeout, the keyword will fail, indicating that the element is not present or not visible.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.068794" elapsed="0.046059"/>
+</kw>
+<msg time="2024-07-19T12:29:13.114853" level="INFO">${is_visible} = True</msg>
+<var>${is_visible}</var>
+<arg>Verify Element Is Visible</arg>
+<arg>${PASSWORD_INPUT}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.067797" elapsed="0.047056"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${is_visible}' == 'False'</arg>
+<arg>Fail</arg>
+<arg>Password input field is not visible</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.114853" elapsed="0.002014"/>
+</kw>
+<kw name="Type Text" owner="Browser">
+<msg time="2024-07-19T12:29:13.116867" level="INFO">Types the text 'TestPassword123' in the given field.</msg>
+<arg>${PASSWORD_INPUT}</arg>
+<arg>${password}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.116867" elapsed="0.406469"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:29:13.523336" level="INFO">Entered password</msg>
+<arg>Entered password</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.523336" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Verify Element Is Visible" owner="basePage">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2024-07-19T12:29:13.540358" level="INFO">Waited for Element with selector id=forms/formSetPassword_password_confirmation at state visible</msg>
+<arg>${element}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.523336" elapsed="0.017022"/>
+</kw>
+<msg time="2024-07-19T12:29:13.540358" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Wait For Elements State</arg>
+<arg>${element}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.523336" elapsed="0.017022"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status} == False</arg>
+<arg>Log</arg>
+<arg>Element ${element} not visible within timeout</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.543242" elapsed="0.000363"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:29:13.544123" level="INFO">Verified visibility of element: id=forms/formSetPassword_password_confirmation</msg>
+<arg>Verified visibility of element: ${element}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.544123" elapsed="0.000828"/>
+</kw>
+<arg>${CONFIRM_PASSWORD_INPUT}</arg>
+<doc>This keyword checks whether the element identified by the provided locator is visible within the specified timeout period.
+If the element is not visible within the timeout, the keyword will fail, indicating that the element is not present or not visible.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.523336" elapsed="0.021984"/>
+</kw>
+<arg>Verify Element Is Visible</arg>
+<arg>${CONFIRM_PASSWORD_INPUT}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.523336" elapsed="0.021984"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Verify Element Is Visible" owner="basePage">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2024-07-19T12:29:13.556372" level="INFO">Waited for Element with selector id=forms/formSetPassword_password_confirmation at state visible</msg>
+<arg>${element}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.547354" elapsed="0.009018"/>
+</kw>
+<msg time="2024-07-19T12:29:13.556372" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Wait For Elements State</arg>
+<arg>${element}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.547354" elapsed="0.009018"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status} == False</arg>
+<arg>Log</arg>
+<arg>Element ${element} not visible within timeout</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.557367" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:29:13.558365" level="INFO">Verified visibility of element: id=forms/formSetPassword_password_confirmation</msg>
+<arg>Verified visibility of element: ${element}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.557367" elapsed="0.000998"/>
+</kw>
+<arg>${CONFIRM_PASSWORD_INPUT}</arg>
+<doc>This keyword checks whether the element identified by the provided locator is visible within the specified timeout period.
+If the element is not visible within the timeout, the keyword will fail, indicating that the element is not present or not visible.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.546366" elapsed="0.011999"/>
+</kw>
+<msg time="2024-07-19T12:29:13.559363" level="INFO">${is_visible} = True</msg>
+<var>${is_visible}</var>
+<arg>Verify Element Is Visible</arg>
+<arg>${CONFIRM_PASSWORD_INPUT}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.545320" elapsed="0.014043"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${is_visible}' == 'False'</arg>
+<arg>Fail</arg>
+<arg>Confirm password input field is not visible</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.559363" elapsed="0.000996"/>
+</kw>
+<kw name="Type Text" owner="Browser">
+<msg time="2024-07-19T12:29:13.561357" level="INFO">Types the text 'TestPassword123' in the given field.</msg>
+<arg>${CONFIRM_PASSWORD_INPUT}</arg>
+<arg>${password}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.560359" elapsed="0.134596"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:29:13.694955" level="INFO">Reentered password</msg>
+<arg>Reentered password</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.694955" elapsed="0.000000"/>
+</kw>
+<arg>${registration_link}</arg>
+<arg>${VERIFY_PASSWORD}</arg>
+<doc>Opens verification link in new page and fills the password form</doc>
+<status status="PASS" start="2024-07-19T12:29:08.081261" elapsed="5.613694"/>
+</kw>
+<kw name="Click Button" owner="basePage">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Click" owner="Browser">
+<msg time="2024-07-19T12:29:13.694955" level="INFO">Clicks the element 'text=Speichern'.</msg>
+<arg>${button}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.694955" elapsed="0.115708"/>
+</kw>
+<msg time="2024-07-19T12:29:13.810663" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Click</arg>
+<arg>${button}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.694955" elapsed="0.115708"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status} == False</arg>
+<arg>Log</arg>
+<arg>Failed to click on ${button}</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.810663" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:29:13.810663" level="INFO">Clicked on text=Speichern</msg>
+<arg>Clicked on ${button}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.810663" elapsed="0.000000"/>
+</kw>
+<arg>${SAVE_BUTTON}</arg>
+<doc>Clicks button based on the provided locator</doc>
+<status status="PASS" start="2024-07-19T12:29:13.694955" elapsed="0.115708"/>
+</kw>
+<kw name="Verify User Logged In My Profile Page" owner="profilePage">
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Verify Element Is Visible" owner="basePage">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2024-07-19T12:29:18.635085" level="INFO">Waited for Element with selector id=myAccount-control at state visible</msg>
+<arg>${element}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.817672" elapsed="4.817413"/>
+</kw>
+<msg time="2024-07-19T12:29:18.635085" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Wait For Elements State</arg>
+<arg>${element}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.817672" elapsed="4.817413"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status} == False</arg>
+<arg>Log</arg>
+<arg>Element ${element} not visible within timeout</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.635085" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:29:18.635085" level="INFO">Verified visibility of element: id=myAccount-control</msg>
+<arg>Verified visibility of element: ${element}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.635085" elapsed="0.000000"/>
+</kw>
+<arg>${MEIN_KONTO}</arg>
+<doc>This keyword checks whether the element identified by the provided locator is visible within the specified timeout period.
+If the element is not visible within the timeout, the keyword will fail, indicating that the element is not present or not visible.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.817672" elapsed="4.817413"/>
+</kw>
+<arg>Verify Element Is Visible</arg>
+<arg>${MEIN_KONTO}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2024-07-19T12:29:13.817672" elapsed="4.817413"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Verify Element Is Visible" owner="basePage">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2024-07-19T12:29:18.650714" level="INFO">Waited for Element with selector id=myAccount-control at state visible</msg>
+<arg>${element}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.635085" elapsed="0.015629"/>
+</kw>
+<msg time="2024-07-19T12:29:18.650714" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Wait For Elements State</arg>
+<arg>${element}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.635085" elapsed="0.015629"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status} == False</arg>
+<arg>Log</arg>
+<arg>Element ${element} not visible within timeout</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.650714" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:29:18.650714" level="INFO">Verified visibility of element: id=myAccount-control</msg>
+<arg>Verified visibility of element: ${element}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.650714" elapsed="0.000000"/>
+</kw>
+<arg>${MEIN_KONTO}</arg>
+<doc>This keyword checks whether the element identified by the provided locator is visible within the specified timeout period.
+If the element is not visible within the timeout, the keyword will fail, indicating that the element is not present or not visible.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.635085" elapsed="0.015629"/>
+</kw>
+<msg time="2024-07-19T12:29:18.650714" level="INFO">${is_visible} = True</msg>
+<var>${is_visible}</var>
+<arg>Verify Element Is Visible</arg>
+<arg>${MEIN_KONTO}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.635085" elapsed="0.015629"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${is_visible}' == 'False'</arg>
+<arg>Fail</arg>
+<arg>"MEIN_KONTO element is not visible, user might not be logged in"</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.650714" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To Lower Case" owner="String">
+<msg time="2024-07-19T12:29:18.650714" level="INFO">${lowercase_registered_email} = ramyatagesspiegel+3aimyge7td@gmail.com</msg>
+<var>${lowercase_registered_email}</var>
+<arg>${random_email}</arg>
+<doc>Converts string to lower case.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.650714" elapsed="0.000000"/>
+</kw>
+<kw name="Catenate" owner="BuiltIn">
+<msg time="2024-07-19T12:29:18.650714" level="INFO">${UserName} = Test User</msg>
+<var>${UserName}</var>
+<arg>${FIRST_NAME}</arg>
+<arg>${LAST_NAME}</arg>
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.650714" elapsed="0.000000"/>
+</kw>
+<kw name="Get Text" owner="Browser">
+<msg time="2024-07-19T12:29:18.774176" level="INFO">Text: 'Test User'</msg>
+<msg time="2024-07-19T12:29:18.774176" level="INFO">${HeadingTitle} = Test User</msg>
+<var>${HeadingTitle}</var>
+<arg>${HEADING_TITLE}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.650714" elapsed="0.123462"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${HeadingTitle}</arg>
+<arg>${FIRST_NAME}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.775173" elapsed="0.000998"/>
+</kw>
+<msg time="2024-07-19T12:29:18.776171" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Should Contain</arg>
+<arg>${HeadingTitle}</arg>
+<arg>${FIRST_NAME}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.775173" elapsed="0.000998"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${status}' == 'False'</arg>
+<arg>Fail</arg>
+<arg>"Heading title does not contain the expected first name"</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.776171" elapsed="0.000996"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:29:18.777167" level="INFO">Verfied User Name</msg>
+<arg>Verfied User Name</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.777167" elapsed="0.000999"/>
+</kw>
+<kw name="Get Text" owner="Browser">
+<msg time="2024-07-19T12:29:18.802104" level="INFO">Text: 'ramyatagesspiegel+3aimyge7td@gmail.com'</msg>
+<msg time="2024-07-19T12:29:18.802104" level="INFO">${email_Confirmation} = ramyatagesspiegel+3aimyge7td@gmail.com</msg>
+<var>${email_Confirmation}</var>
+<arg>${PROFILE_EMAIL}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.778166" elapsed="0.024932"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${email_Confirmation}</arg>
+<arg>${lowercase_registered_email}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.804096" elapsed="0.000999"/>
+</kw>
+<msg time="2024-07-19T12:29:18.805095" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Should Be Equal</arg>
+<arg>${email_Confirmation}</arg>
+<arg>${lowercase_registered_email}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.803098" elapsed="0.001997"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${status}' == 'False'</arg>
+<arg>Fail</arg>
+<arg>"Email confirmation does not match the registered email"</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.805095" elapsed="0.000996"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:29:18.807077" level="INFO">Verified user login successfully</msg>
+<arg>Verified user login successfully</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.806091" elapsed="0.001461"/>
+</kw>
+<arg>${random_email}</arg>
+<doc>Verifies if user is logged in after submitting password form</doc>
+<status status="PASS" start="2024-07-19T12:29:13.810663" elapsed="4.996889"/>
+</kw>
+<kw name="Verify User Logged out" owner="profilePage">
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Hover" owner="Browser">
+<arg>${MEIN_KONTO}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Moves the virtual mouse and scrolls to the element found by ``selector``.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.809112" elapsed="0.055793"/>
+</kw>
+<arg>Hover</arg>
+<arg>${MEIN_KONTO}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.809112" elapsed="0.056840"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Hover" owner="Browser">
+<arg>${MEIN_KONTO}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Moves the virtual mouse and scrolls to the element found by ``selector``.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.865952" elapsed="0.042425"/>
+</kw>
+<msg time="2024-07-19T12:29:18.908377" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Hover</arg>
+<arg>${MEIN_KONTO}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.865952" elapsed="0.042425"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${status}' == 'False'</arg>
+<arg>Fail</arg>
+<arg>"Failed to hover over MEIN_KONTO"</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.908377" elapsed="0.000997"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Click" owner="Browser">
+<msg time="2024-07-19T12:29:18.910371" level="INFO">Clicks the element 'xpath=//div[@class='menu__nav__list']/a[contains(text(),'Abmelden')]'.</msg>
+<arg>${ABMELDEN_LINK}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.910371" elapsed="0.054778"/>
+</kw>
+<arg>Click</arg>
+<arg>${ABMELDEN_LINK}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.909374" elapsed="0.056772"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Click" owner="Browser">
+<msg time="2024-07-19T12:29:18.967143" level="INFO">Clicks the element 'xpath=//div[@class='menu__nav__list']/a[contains(text(),'Abmelden')]'.</msg>
+<arg>${ABMELDEN_LINK}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.966146" elapsed="0.048930"/>
+</kw>
+<msg time="2024-07-19T12:29:19.015076" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Click</arg>
+<arg>${ABMELDEN_LINK}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:29:18.966146" elapsed="0.048930"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${status}' == 'False'</arg>
+<arg>Fail</arg>
+<arg>"Failed to click the ABMELDEN_LINK"</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:29:19.016070" elapsed="0.000997"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Verify Element Is Visible" owner="basePage">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2024-07-19T12:29:21.144873" level="INFO">Waited for Element with selector css=a.menu__profile[href='https://mein.tagesspiegel.de'][title='Melden Sie sich mit Ihrem Tagesspiegel-Konto an'] at state visible</msg>
+<arg>${element}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2024-07-19T12:29:19.020680" elapsed="2.124193"/>
+</kw>
+<msg time="2024-07-19T12:29:21.145870" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Wait For Elements State</arg>
+<arg>${element}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:29:19.020062" elapsed="2.125808"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status} == False</arg>
+<arg>Log</arg>
+<arg>Element ${element} not visible within timeout</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:29:21.146358" elapsed="0.000998"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:29:21.148353" level="INFO">Verified visibility of element: css=a.menu__profile[href='https://mein.tagesspiegel.de'][title='Melden Sie sich mit Ihrem Tagesspiegel-Konto an']</msg>
+<arg>Verified visibility of element: ${element}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:29:21.147356" elapsed="0.001995"/>
+</kw>
+<arg>${ANMELDEN_BUTTON}</arg>
+<doc>This keyword checks whether the element identified by the provided locator is visible within the specified timeout period.
+If the element is not visible within the timeout, the keyword will fail, indicating that the element is not present or not visible.</doc>
+<status status="PASS" start="2024-07-19T12:29:19.018064" elapsed="2.131287"/>
+</kw>
+<arg>Verify Element Is Visible</arg>
+<arg>${ANMELDEN_BUTTON}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2024-07-19T12:29:19.017067" elapsed="2.132284"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Verify Element Is Visible" owner="basePage">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2024-07-19T12:29:21.203768" level="INFO">Waited for Element with selector css=a.menu__profile[href='https://mein.tagesspiegel.de'][title='Melden Sie sich mit Ihrem Tagesspiegel-Konto an'] at state visible</msg>
+<arg>${element}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2024-07-19T12:29:21.153724" elapsed="0.051040"/>
+</kw>
+<msg time="2024-07-19T12:29:21.205760" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Wait For Elements State</arg>
+<arg>${element}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:29:21.152726" elapsed="0.053034"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status} == False</arg>
+<arg>Log</arg>
+<arg>Element ${element} not visible within timeout</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:29:21.205760" elapsed="0.000999"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:29:21.208760" level="INFO">Verified visibility of element: css=a.menu__profile[href='https://mein.tagesspiegel.de'][title='Melden Sie sich mit Ihrem Tagesspiegel-Konto an']</msg>
+<arg>Verified visibility of element: ${element}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:29:21.207755" elapsed="0.002002"/>
+</kw>
+<arg>${ANMELDEN_BUTTON}</arg>
+<doc>This keyword checks whether the element identified by the provided locator is visible within the specified timeout period.
+If the element is not visible within the timeout, the keyword will fail, indicating that the element is not present or not visible.</doc>
+<status status="PASS" start="2024-07-19T12:29:21.151345" elapsed="0.059095"/>
+</kw>
+<msg time="2024-07-19T12:29:21.210440" level="INFO">${is_visible} = True</msg>
+<var>${is_visible}</var>
+<arg>Verify Element Is Visible</arg>
+<arg>${ANMELDEN_BUTTON}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:29:21.150347" elapsed="0.060093"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${is_visible}' == 'False'</arg>
+<arg>Fail</arg>
+<arg>"ANMELDEN_BUTTON element is not visible, user might not be logged out"</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:29:21.211492" elapsed="0.000997"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:29:21.213487" level="INFO">User logged out successfully</msg>
+<arg>User logged out successfully</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:29:21.212489" elapsed="0.000998"/>
+</kw>
+<doc>CLicks on Logout link and verifies if user is logged out</doc>
+<status status="PASS" start="2024-07-19T12:29:18.808107" elapsed="2.406377"/>
+</kw>
+<kw name="Tear Down Browser" type="TEARDOWN">
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:29:21.217475" level="INFO">Tearing down browser</msg>
+<arg>Tearing down browser</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:29:21.216478" elapsed="0.000997"/>
+</kw>
+<kw name="Close Opened Browser" owner="basePage">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Close Browser" owner="Browser">
+<msg time="2024-07-19T12:29:22.961427" level="INFO">Closed browser</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-07-19T12:29:21.220468" elapsed="1.740959"/>
+</kw>
+<msg time="2024-07-19T12:29:22.961427" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Close Browser</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-19T12:29:21.219470" elapsed="1.741957"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status} == False</arg>
+<arg>Log</arg>
+<arg>Failed to close the browser</arg>
+<arg>console=True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-19T12:29:22.961427" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-19T12:29:22.961427" level="INFO">Browser closed</msg>
+<arg>Browser closed</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-19T12:29:22.961427" elapsed="0.000000"/>
+</kw>
+<doc>Closes opened browser</doc>
+<status status="PASS" start="2024-07-19T12:29:21.218472" elapsed="1.742955"/>
+</kw>
+<status status="PASS" start="2024-07-19T12:29:21.215481" elapsed="1.745946"/>
+</kw>
+<status status="PASS" start="2024-07-19T12:28:25.857873" elapsed="57.103554"/>
+</test>
+<status status="PASS" start="2024-07-19T12:28:16.353514" elapsed="66.607913"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="registrationTest">registrationTest</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2024-07-19T12:28:37.988132" level="WARN">Keyword 'BuiltIn.Run Keyword Unless' is deprecated. </msg>
+</errors>
+</robot>
