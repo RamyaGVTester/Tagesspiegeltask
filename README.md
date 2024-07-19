@@ -6,16 +6,19 @@ You can run the registrationTest.robot test case on different environments by sp
 
 To run the test on the Production environment:
 ```bash
+cd tagesspiegel_registrieren
 robot -v env:prod tests/registrationTest.robot
 ```
 
 To run the test on the Test1 environment:
 ```bash
+cd tagesspiegel_registrieren
 robot -v env:test1 tests/registrationTest.robot
 ```
 
 To run the test on the Staging environment:
 ```bash
+cd tagesspiegel_registrieren
 robot -v env:staging tests/registrationTest.robot
 ```
 
@@ -47,8 +50,8 @@ tagesspiegel_registrieren/
 │
 ├── tests/
 │   ├── registrationTest.robot  # Test case for verifying the registration process
-│
-├── README.md                   # Documentation for the framework
+
+README.md                   # Documentation for the framework
 ```
 
 ## Supported Browsers
